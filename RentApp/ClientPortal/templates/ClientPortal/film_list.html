@@ -1,0 +1,57 @@
+{% extends 'ClientPortal/base.html' %}
+{% block content %}
+<div class="w3-bar w3-black w3-large">
+  <div class="w3-bar-item w3-left w3-black">DVD Rental Portal: {{user.username}}</div>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="/car_dealer_portal/logout/">Logout</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right " href="/car_dealer_portal/auth/">Home</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="/car_dealer_portal/order_list/">Orders</a>
+</div>
+<h3 class="w3-center" style="padding-top:30"><b>Flims to Choose</b></h3>
+<div style="padding:18">
+  <table class="w3-table w3-striped w3-center">
+
+    <tr>
+      <th style="padding:20;">Title</th>
+      <th style="padding:20;">Release Year </th>
+      <th style="padding:20;">Length </th>
+      <th style="padding:20;">Rental Rate </th>
+      <th style="padding:20;">Rental Duration</th>
+      <th style="padding:20;">Rating</th>
+    </tr>
+    {% for film in film_list %}
+    <tr>
+      <td>{{film.title}}</td>
+      <td>{{film.release_year}}</td>
+      <td>{{film.length}} min</td>
+      <td>{{film.rental_rate}}</td>
+      <td>{{film.rental_duration}} days</td>
+      <td>{{film.rating}}</td>
+      <td>
+        <form action="/car_dealer_portal/delete/" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="id" value="{{vehicle.id}}">
+          <input class="w3-btn w3-red" type="submit" value="Delete">
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  <div class="w3-center">
+    <span class="step-links">
+      {% if film_list.has_previous %}
+      <a href="?page=1">&laquo; first</a>
+      <a href="?page={{ film_list.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+        Page {{ film_list.number }} of {{ film_list.paginator.num_pages }}.
+      </span>
+
+      {% if film_list.has_next %}
+      <a href="?page={{ film_list.next_page_number }}">next</a>
+      <a href="?page={{ film_list.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+    </span>
+  </div>
+</div>
+{% endblock %}
