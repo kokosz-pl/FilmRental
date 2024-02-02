@@ -1,0 +1,16 @@
+{% extends 'AdminPortal/base.html' %}
+{% block content %}
+{% csrf_token %}
+<div class="w3-bar w3-black w3-large">
+  <div class="w3-bar-item w3-left w3-black">DVD Rental Portal: {{user.username}}</div>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="/AdminPortal/logout/">Logout</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right " href="/AdminPortal/auth/">Home</a>
+</div>
+
+<div class="w3-display-container" style="height:300px;">
+  <div class="w3-display-middle">
+    Film Details Added! <br><br>
+    <a href="/AdminPortal/auth/">Back To Home Page</a>
+</div>
+</div>
+{% endblock %}

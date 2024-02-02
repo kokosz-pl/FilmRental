@@ -1,0 +1,20 @@
+{% extends 'ClientPortal/base.html' %}
+{% block content %}
+{% csrf_token %}
+<div class="w3-bar w3-black w3-large">
+    <div class="w3-bar-item w3-left w3-black">DVD Rental Portal: {{user.username}}</div>
+    <a class="w3-bar-item w3-btn w3-teal w3-right" href="/ClientPortal/logout/">Logout</a>
+    <a class="w3-bar-item w3-btn w3-teal w3-right " href="/ClientPortal/auth/">Home</a>
+</div>
+
+<div class="w3-display-container" style="height:300px;">
+    <div class="w3-center">
+        <br>
+        <h2>Film Title: {{ film_title }}</h2><br>
+        <form action="/ClientPortal/order_confirmed/" method="post">{% csrf_token %}
+            <input type="hidden" name="id" value="{{film_id}}">
+            <h3><input class="w3-btn w3-blue" type="submit" value="Confirm Order"></h3>
+          </form>
+    </div>
+</div>
+{% endblock %}

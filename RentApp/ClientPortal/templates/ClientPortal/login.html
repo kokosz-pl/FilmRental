@@ -4,7 +4,7 @@
 
 <div class="w3-display-container" style="height:500px;">
   <div class="w3-display-middle">
-      <form class = "w3-container"  method="POST">{% csrf_token %}
+      <form class = "w3-container" action="/ClientPortal/auth/" method="POST">{% csrf_token %}
         <lable>Username</lable>  <input class="w3-input" type="text" name="username"><br><br>
         <lable>Password</lable>  <input class="w3-input" type="password" name="password"><br><br>
         <input class="w3-btn w3-green" type="submit" value="Login">

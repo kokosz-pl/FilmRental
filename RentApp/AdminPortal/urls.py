@@ -1,11 +1,12 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from .views import films
-from .views import login
+from .views import *
 
 urlpatterns = [
     path('login/', login, name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('films/', films, name='films'),
-    # Dodaj inne ścieżki...
-]
+    path('auth/', auth_view, name='auth'),
+    path('logout/',logout_view, name='logout'),
+    path('add_film_form/', add_film_view, name='add_film'),
+    path('delete/', delete, name='delete'),
+    path('add_film/', film_added_view, name='film_added'),
+    ]

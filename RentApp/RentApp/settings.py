@@ -36,15 +36,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'Home.apps.HomeConfig',
-    'ClientPortal.apps.ClientPortalConfig',
-    'AdminPortal.apps.AdminPortalConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'Home.apps.HomeConfig',
+    'ClientPortal.apps.ClientPortalConfig',
+    'AdminPortal.apps.AdminPortalConfig',
 ]
 
 MIDDLEWARE = [

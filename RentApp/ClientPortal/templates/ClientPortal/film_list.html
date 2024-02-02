@@ -2,9 +2,9 @@
 {% block content %}
 <div class="w3-bar w3-black w3-large">
   <div class="w3-bar-item w3-left w3-black">DVD Rental Portal: {{user.username}}</div>
-  <a class="w3-bar-item w3-btn w3-teal w3-right" href="/car_dealer_portal/logout/">Logout</a>
-  <a class="w3-bar-item w3-btn w3-teal w3-right " href="/car_dealer_portal/auth/">Home</a>
-  <a class="w3-bar-item w3-btn w3-teal w3-right" href="/car_dealer_portal/order_list/">Orders</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="/ClientPortal/logout/">Logout</a>
+  <!-- <a class="w3-bar-item w3-btn w3-teal w3-right " href="/ClientPortal/auth/">Home</a> -->
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="/ClientPortal/purchase_list/">Purchased Films</a>
 </div>
 <h3 class="w3-center" style="padding-top:30"><b>Flims to Choose</b></h3>
 <div style="padding:18">
@@ -15,7 +15,6 @@
       <th style="padding:20;">Release Year </th>
       <th style="padding:20;">Length </th>
       <th style="padding:20;">Rental Rate </th>
-      <th style="padding:20;">Rental Duration</th>
       <th style="padding:20;">Rating</th>
     </tr>
     {% for film in film_list %}
@@ -24,18 +23,18 @@
       <td>{{film.release_year}}</td>
       <td>{{film.length}} min</td>
       <td>{{film.rental_rate}}</td>
-      <td>{{film.rental_duration}} days</td>
       <td>{{film.rating}}</td>
       <td>
-        <form action="/car_dealer_portal/delete/" method="post">
+        <form action="/ClientPortal/buy_film/" method="post">
           {% csrf_token %}
-          <input type="hidden" name="id" value="{{vehicle.id}}">
-          <input class="w3-btn w3-red" type="submit" value="Delete">
+          <input type="hidden" name="id" value="{{film.film_id}}">
+          <input class="w3-btn w3-blue" type="submit" value="Buy">
         </form>
       </td>
     </tr>
     {% endfor %}
   </table>
+  <br>
   <div class="w3-center">
     <span class="step-links">
       {% if film_list.has_previous %}
