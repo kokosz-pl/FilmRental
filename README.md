@@ -1,1 +1,1 @@
-# FilmRental
+# Film Store Web App
